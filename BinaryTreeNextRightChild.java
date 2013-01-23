@@ -2,7 +2,7 @@
 
 
 class Node{
-  int item;
+	int item;
 	Node leftChild;
 	Node rightChild;
 	Node nextRight;
@@ -171,17 +171,21 @@ public class BinaryTreeNextRightChild {
 		theTree.insert(65);
 		theTree.insert(12);
 		theTree.insert(37);
-		theTree.insert(13);
-		theTree.insert(30);
+		//theTree.insert(13);
+		//theTree.insert(30);
 		theTree.insert(43);
 		theTree.insert(87);
-		theTree.insert(99);
-		theTree.insert(9);
+		//theTree.insert(99);
+/*		theTree.insert(9);
+		theTree.insert(38);
+		theTree.insert(44);
+		theTree.insert(45);
+		theTree.insert(86);*/
 
 		System.out.println("Displaying the tree");
 		theTree.displayTree();
 		fixNextLink(theTree.root);
-		System.out.println(theTree.root.nextRight);
+		System.out.println(theTree.root.leftChild.nextRight.item);
 
 	}
 		public static void fixNextLink(Node root) {
@@ -209,4 +213,27 @@ public class BinaryTreeNextRightChild {
 			fixNextLink(root.leftChild);
 			fixNextLink(root.rightChild);
 		}
+		
+		
+		/*public static void fixNextLink(Node root) {
+			if(root == null) return;
+			
+			if(root.leftChild == null||root.rightChild == null) return;
+			
+			Node rightSibling;
+			Node temp=root;
+			
+			while (temp) {
+			    if (p1->nextRight)
+			      rightSibling = p1->nextRight->leftChild;
+			    else
+			      rightSibling = NULL;
+			    p1->leftChild->nextRight = p1->rightChild;
+			    p1->rightChild->nextRight = rightSibling;
+			    p1 = p1->nextRight;
+			  }
+			  connect(p->leftChild);
+			}
+			
+		}*/
 	}

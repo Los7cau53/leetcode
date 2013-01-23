@@ -171,8 +171,8 @@ public class BinaryTreeNextRightChild {
 		theTree.insert(65);
 		theTree.insert(12);
 		theTree.insert(37);
-		//theTree.insert(13);
-		//theTree.insert(30);
+		theTree.insert(13);
+		theTree.insert(30);
 		theTree.insert(43);
 		theTree.insert(87);
 		//theTree.insert(99);
@@ -186,6 +186,8 @@ public class BinaryTreeNextRightChild {
 		theTree.displayTree();
 		fixNextLink(theTree.root);
 		System.out.println(theTree.root.leftChild.nextRight.item);
+		System.out.println(theTree.root.leftChild.leftChild.rightChild.nextRight.item);
+		System.out.println(theTree.root.leftChild.rightChild.leftChild.nextRight);
 
 	}
 		public static void fixNextLink(Node root) {
@@ -206,7 +208,7 @@ public class BinaryTreeNextRightChild {
 				temp = temp.nextRight;
 			}
 			// Finally if the left and right child exists, connect left to right
-			if (rightmostChild != root.leftChild) {
+			if (rightmostChild != root.leftChild&&root.leftChild!=null) {
 				root.leftChild.nextRight = root.rightChild;
 			}
 			// Go down the tree to fix other links

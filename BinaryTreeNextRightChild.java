@@ -1,4 +1,8 @@
+/*
+http://leetcode.com/2010/03/first-on-site-technical-interview.html
+http://www.geeksforgeeks.org/connect-nodes-at-same-level-with-o1-extra-space/
 
+*/
 
 
 class Node{
@@ -166,7 +170,11 @@ public class BinaryTreeNextRightChild {
 	{
 		int value;
 		Tree theTree = new Tree();
-		theTree.insert(42);
+		/*1st set
+		 * 
+		 * 
+		 */
+		/*theTree.insert(42);
 		theTree.insert(25);
 		theTree.insert(65);
 		theTree.insert(12);
@@ -174,21 +182,34 @@ public class BinaryTreeNextRightChild {
 		theTree.insert(13);
 		theTree.insert(30);
 		theTree.insert(43);
-		theTree.insert(87);
-		//theTree.insert(99);
-/*		theTree.insert(9);
-		theTree.insert(38);
-		theTree.insert(44);
-		theTree.insert(45);
-		theTree.insert(86);*/
+		theTree.insert(87);*/
+		//2nd set
+		/* Constructed binary tree is
+        10
+      /   \
+    8      2
+  /         \
+3            90
+*/
+
+		theTree.root= new Node(); theTree.root.item=10;
+		theTree.root.leftChild=new Node();   theTree.root.leftChild.item=8;
+		theTree.root.rightChild=new Node();  theTree.root.rightChild.item=2;
+		theTree.root.leftChild.leftChild = new Node();  theTree.root.leftChild.leftChild.item=3;     
+		theTree.root.rightChild.rightChild= new Node();   theTree.root.rightChild.rightChild.item=90;
+		
 
 		System.out.println("Displaying the tree");
 		theTree.displayTree();
 		fixNextLink(theTree.root);
 		System.out.println(theTree.root.leftChild.nextRight.item);
-		System.out.println(theTree.root.leftChild.leftChild.rightChild.nextRight.item);
-		System.out.println(theTree.root.leftChild.rightChild.leftChild.nextRight);
-
+		/*1st set
+		 */
+		 /*System.out.println(theTree.root.leftChild.leftChild.rightChild.nextRight.item);
+		System.out.println(theTree.root.leftChild.rightChild.leftChild.nextRight);*/
+      //2nd set
+		
+		System.out.println(theTree.root.leftChild.leftChild.nextRight.item);
 	}
 		public static void fixNextLink(Node root) {
 			if(root == null) return;

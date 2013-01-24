@@ -222,9 +222,9 @@ public class BinaryTreeNextRightChild {
 			Node leftmostSibling=null;
 			while(temp != null && leftmostSibling == null){
 				// Left most sibling to the right in the current level from the right most node of the current node
-				Node leftmostSiblingInChain = (temp.leftChild != null) ? temp.leftChild : temp.rightChild;
-				if(leftmostSiblingInChain != null) {
-					rightmostChild.nextRight = leftmostSiblingInChain;
+				 leftmostSibling = (temp.leftChild != null) ? temp.leftChild : temp.rightChild;
+				if(leftmostSibling != null) {
+					rightmostChild.nextRight = leftmostSibling;
 				}
 				temp = temp.nextRight;
 			}

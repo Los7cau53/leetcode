@@ -1,3 +1,5 @@
+package l337;
+
 //http://leetcode.com/2010/04/finding-all-unique-triplets-that-sums.html
 //can replace 0 to wanted sum
 import java.util.HashSet;

@@ -1,3 +1,5 @@
+package l337;
+
 //http://leetcode.com/2010/04/rotating-array-in-place.html
 public class RotateArrayInPlace {
 

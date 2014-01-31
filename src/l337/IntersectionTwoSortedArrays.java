@@ -1,3 +1,5 @@
+package l337;
+
 //http://leetcode.com/2010/03/here-is-phone-screening-question-from.html
 //O(m+n)
 //if we use binary serach in b-- O(n*lg(m))

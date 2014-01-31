@@ -3,7 +3,7 @@
  * 
 */
 
-package com.leet;
+package l337;
 
 /**
  * @author cteja

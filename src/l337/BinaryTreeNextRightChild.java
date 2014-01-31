@@ -1,8 +1,17 @@
+package l337;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+/*
+http://leetcode.com/2010/03/first-on-site-technical-interview.html
 http://www.geeksforgeeks.org/connect-nodes-at-same-level-with-o1-extra-space/
 
+*/
+
+
 class Node{
-  int item;
+	int item;
 	Node leftChild;
 	Node rightChild;
 	Node nextRight;
@@ -155,7 +164,48 @@ class Tree
 		}
 		System.out.println("****......................................................****");
 	}
+	public void preOrder(Node Root)
+	{
+		if(Root != null)
+		{	
+			System.out.print(Root.item + " ");
+			preOrder(Root.leftChild);
+			preOrder(Root.rightChild);
+		}
+	}
+	public void inOrder(Node Root)
+	{
+		if(Root != null)
+		{
+			inOrder(Root.leftChild);
+			System.out.print(Root.item + " ");
+			inOrder(Root.rightChild);
+		}
+	}
+	public void postOrder(Node Root)
+	{
+		if(Root != null)
+		{
+			postOrder(Root.leftChild);
+			postOrder(Root.rightChild);
+			System.out.print(Root.item + " ");
+		}
+	}
 
+	public void byLevel(Node root){
+		Queue<Node> level	= new LinkedList<Node>();
+		level.add(root);
+
+		while(!level.isEmpty()){
+			Node node = level.poll();
+			System.out.print(node.item + " ");
+			if(node.leftChild!= null)
+				level.add(node.leftChild);
+			if(node.rightChild!= null)
+				level.add(node.rightChild);
+		}
+
+}
 }
 
 
@@ -166,6 +216,10 @@ public class BinaryTreeNextRightChild {
 	{
 		int value;
 		Tree theTree = new Tree();
+		/*1st set
+		 * 
+		 * 
+		 */
 		/*theTree.insert(42);
 		theTree.insert(25);
 		theTree.insert(65);
@@ -176,22 +230,66 @@ public class BinaryTreeNextRightChild {
 		theTree.insert(43);
 		theTree.insert(87);*/
 		//2nd set
-		theTree.root.item=2;
-		theTree.root.leftChild=new Node();
-		theTree.root.rightChild=new Node();
-		theTree.insert(10);
-     	theTree.insert(8);
-		theTree.insert(2);
-		theTree.insert(3);
-		theTree.insert(90);
+		/* Constructed binary tree is
+        10
+      /   \
+    8      2
+  /         \
+3            90
+*/
+
+		theTree.root= new Node(); theTree.root.item=10;
+		theTree.root.leftChild=new Node();   theTree.root.leftChild.item=8;
+		theTree.root.rightChild=new Node();  theTree.root.rightChild.item=2;
+		theTree.root.leftChild.leftChild = new Node();  theTree.root.leftChild.leftChild.item=3;     
+		theTree.root.rightChild.rightChild= new Node();   theTree.root.rightChild.rightChild.item=90;
 		
 
 		System.out.println("Displaying the tree");
 		theTree.displayTree();
 		fixNextLink(theTree.root);
 		System.out.println(theTree.root.leftChild.nextRight.item);
-		System.out.println(theTree.root.leftChild.leftChild.rightChild.nextRight.item);
-		System.out.println(theTree.root.leftChild.rightChild.leftChild.nextRight);
+		/*1st set
+		 */
+		 /*System.out.println(theTree.root.leftChild.leftChild.rightChild.nextRight.item);
+		System.out.println(theTree.root.leftChild.rightChild.leftChild.nextRight);*/
+      //2nd set
+		
+		System.out.println(theTree.root.leftChild.leftChild.nextRight.item);
+		/*
+		 int value;
+		Tree theTree = new Tree();
+		theTree.insert(42);
+		theTree.insert(25);
+		theTree.insert(65);
+		theTree.insert(12);
+		theTree.insert(37);
+		theTree.insert(13);
+		theTree.insert(30);
+		theTree.insert(43);
+		theTree.insert(87);
+		theTree.insert(99);
+		theTree.insert(9);
+
+		System.out.println("Displaying the tree");
+		theTree.displayTree();
+
+		System.out.println("Inorder traversal");
+		theTree.inOrder(theTree.returnRoot());
+		System.out.println(" ");
+
+		System.out.println("Preorder traversal");
+		theTree.preOrder(theTree.returnRoot());
+		System.out.println(" ");
+
+		System.out.println("Postorder traversal");
+		theTree.postOrder(theTree.returnRoot());
+		System.out.println(" ");
+
+		System.out.println("By Level");
+		theTree.byLevel(theTree.returnRoot());
+		System.out.println(" ");
+		 */
 
 	}
 		public static void fixNextLink(Node root) {
@@ -205,9 +303,9 @@ public class BinaryTreeNextRightChild {
 			Node leftmostSibling=null;
 			while(temp != null && leftmostSibling == null){
 				// Left most sibling to the right in the current level from the right most node of the current node
-				Node leftmostSiblingInChain = (temp.leftChild != null) ? temp.leftChild : temp.rightChild;
-				if(leftmostSiblingInChain != null) {
-					rightmostChild.nextRight = leftmostSiblingInChain;
+				 leftmostSibling = (temp.leftChild != null) ? temp.leftChild : temp.rightChild;
+				if(leftmostSibling != null) {
+					rightmostChild.nextRight = leftmostSibling;
 				}
 				temp = temp.nextRight;
 			}

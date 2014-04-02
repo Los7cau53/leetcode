@@ -1,5 +1,5 @@
 package g33k;
-
+//O(n)
 public class SizeOfTree {
 
 	/**

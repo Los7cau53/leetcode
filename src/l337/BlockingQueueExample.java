@@ -3,6 +3,8 @@ package l337;
  * http://tutorials.jenkov.com/java-concurrency/blocking-queues.html
  * 
  * http://tutorials.jenkov.com/java-util-concurrent/blockingqueue.html
+ 
+ https://www.journaldev.com/1034/java-blockingqueue-example
  * 
  * 
  */
